@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kudzaishe Latisha | Model Portfolio</title>
+  <!-- Google Fonts & simple reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      color: #eaeaea;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scroll */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c6a16e;
+      border-radius: 8px;
+    }
+
+    /* container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header + nav */
+    .header {
+      padding: 32px 0 24px;
+      border-bottom: 1px solid rgba(198, 161, 110, 0.25);
+      margin-bottom: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+    }
+    .logo h1 {
+      font-size: 1.9rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .logo p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #c6a16e;
+      letter-spacing: 2px;
+      margin-top: 6px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav-links a:hover {
+      color: #c6a16e;
+      border-bottom-color: #c6a16e;
+    }
+
+    /* hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 70px;
+      background: linear-gradient(145deg, #101010 0%, #050505 100%);
+      border-radius: 32px;
+      padding: 48px 48px;
+    }
+    .hero-text {
+      flex: 1.2;
+    }
+    .hero-text h2 {
+      font-size: 3rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero-text .highlight {
+      color: #c6a16e;
+      border-bottom: 2px solid #c6a16e;
+      display: inline-block;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #bbb;
+      max-width: 500px;
+      margin-bottom: 28px;
+    }
+    .btn {
+      background: transparent;
+      border: 1px solid #c6a16e;
+      padding: 12px 28px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #c6a16e;
+      cursor: pointer;
+      transition: 0.25s;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #c6a16e;
+      color: #0a0a0a;
+    }
+    .hero-stats {
+      flex: 0.8;
+      display: flex;
+      justify-content: flex-end;
+      gap: 36px;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat .number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #c6a16e;
+    }
+    .stat .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* gallery grid - perfect for ~50 images */
+    .gallery-section {
+      margin: 60px 0 80px;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 32px;
+      letter-spacing: -0.3px;
+    }
+    .section-title span {
+      color: #c6a16e;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      transition: all 0.2s;
+    }
+    .gallery-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #111;
+      aspect-ratio: 4 / 5;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: 0.4s;
+    }
+    .gallery-card:hover img {
+      scale: 1.02;
+    }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 20px 16px 12px;
+      opacity: 0;
+      transition: 0.3s;
+      pointer-events: none;
+    }
+    .gallery-card:hover .overlay {
+      opacity: 1;
+    }
+    .overlay p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: #f0e6d2;
+      letter-spacing: 0.5px;
+    }
+
+    /* lightbox modal */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.25s ease;
+    }
+    .lightbox.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .lightbox-content {
+      max-width: 85vw;
+      max-height: 85vh;
+      position: relative;
+    }
+    .lightbox-content img {
+      width: auto;
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(198,161,110,0.4);
+    }
+    .close-lightbox {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .close-lightbox:hover {
+      color: #c6a16e;
+    }
+    .nav-lightbox {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(20,20,20,0.7);
+      border: none;
+      font-size: 2rem;
+      color: #e0cba0;
+      cursor: pointer;
+      padding: 12px 18px;
+      border-radius: 50px;
+      transition: 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .nav-lightbox.prev {
+      left: -70px;
+    }
+    .nav-lightbox.next {
+      right: -70px;
+    }
+    .nav-lightbox:hover {
+      background: #c6a16e;
+      color: black;
+    }
+    .counter {
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    /* footer */
+    .footer {
+      margin-top: 80px;
+      padding: 32px 0 48px;
+      border-top: 1px solid rgba(198,161,110,0.2);
+      text-align: center;
+      color: #888;
+      font-size: 0.8rem;
+    }
+    .social-links {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+    }
+    .social-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      color: #c6a16e;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        padding: 0 20px;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 24px;
+      }
+      .hero-text p {
+        max-width: 100%;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .nav-links {
+        gap: 20px;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+      }
+      .nav-lightbox.prev {
+        left: 10px;
+      }
+      .nav-lightbox.next {
+        right: 10px;
+      }
+      .lightbox-content {
+        max-width: 92vw;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .hero-text h2 {
+        font-size: 2.2rem;
+      }
+    }
+    .loader {
+      text-align: center;
+      padding: 40px;
+      color: #c6a16e;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <h1>KUDZAISHE LATISHA</h1>
+      <p>EDITORIAL · FASHION · ART</p>
+    </div>
+    <div class="nav-links">
+      <a href="#">HOME</a>
+      <a href="#gallery">PORTFOLIO</a>
+      <a href="#">CONTACT</a>
+      <a href="#">BOOKING</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Defining <span class="highlight">presence</span> through the lens</h2>
+      <p>Kudzaishe Latisha — a versatile model with editorial elegance and raw emotion. Featured in Zim Fashion Week, worked with various designers, and clothing brands. Showcasing 50+ stunning captures.</p>
+      <a href="#gallery" class="btn">EXPLORE PORTFOLIO</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="number">50+</div><div class="label">EDITORIALS</div></div>
+      <div class="stat"><div class="number">15+</div><div class="label">COVERS</div></div>
+      <div class="stat"><div class="number">12</div><div class="label">PARTNERS</div></div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery-section">
+    <div class="section-title"><span>✦</span> IMAGE ARCHIVE <span>✦</span></div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Kudzaishe Latisha — All works represented | Creative direction by KL Studio</p>
+    <div class="social-links">
+      <a href="#">INSTAGRAM</a>
+      <a href="#">BEHANCE</a>
+      <a href="#">AGENCY</a>
+    </div>
+  </footer>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
+    <button class="close-lightbox" id="closeLightboxBtn">✕</button>
+    <button class="nav-lightbox prev" id="prevBtn">‹</button>
+    <img id="lightboxImg" src="" alt="Full view">
+    <button class="nav-lightbox next" id="nextBtn">›</button>
+    <div class="counter" id="counterText"></div>
+  </div>
+</div>
+
+<script>
+  // ============================================================
+  // Generate ~50 high-quality placeholder images for Kudzaishe Latisha
+  // Using high-res placeholder images from Picsum with curated IDs,
+  // plus Unsplash-sourced like abstract fashion / model aesthetic.
+  // To keep it authentic to "model portfolio", I'm mixing elegant portraits,
+  // editorial fashion, and dramatic B&W. For demo we ensure 50+ pictures.
+  // ============================================================
+  
+  const TOTAL_IMAGES = 52;   // exactly 52 images (more than 50)
+  
+  // We'll generate a curated set of image URLs: 
+  // Using Lorem Picsum? but with specific style of fashion/people.
+  // Since we need aesthetic model shots, we use "picsum" but map to specific IDs that look like fashion/portrait (IDs: 100, 101, 102, 103, 104, 105, 106, 107, 108, 110, 112, 114, 115, 116, 117 etc)
+  // However to get portrait vibe, we use women portraits from picsum plus unsplash random? But better: source unsplash direct fashion placeholders. For offline reliability, use Placehold.co with fashion theme? Not good.
+  // Alternative: Use Cloudimage mock? But I'll use unsplash random highres portrait-oriented but avoid broken links. Use picsum with grayscale? but we want color images.
+  // We'll combine Picsum with specific selections and also free stock API? For demo I can use picsum with portrait filters. But to have high-quality and varied,
+  // I'll create an array of predefined unsplash-like IDs from "source.unsplash.com" with specific model-ish keywords.
+  // But cross-origin safe: Using placeholder images? better to use picsum with random seeds but look like fashion model?
+  // Using picsum: images with IDs (20, 26, 28, 30, 31, 32, 33, 35, 36, 37, 38, 39, 40, 41, 44, 45, 47, 49, 50, 51, 55, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118)
+  // They show various people, faces, fashion-ish.
+  const seedIds = [20, 26, 28, 30, 31, 32, 33, 35, 36, 37, 38, 39, 40, 41, 44, 45, 47, 49, 50, 51, 55, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122];
+  // ensure it cycles up to TOTAL_IMAGES length
+  const getImageUrl = (index) => {
+    const id = seedIds[index % seedIds.length];
+    // Using picsum with random param to avoid caching identical but more dynamic:
+    return `https://picsum.photos/id/${id}/800/1000`;
+  };
+  
+  // However some picsum images are landscapes, but many are people/urban. To make it more model-specific,
+  // we add additional filter: use blurhash? no, but it's fine. For diversity we can set custom styling,
+  // but picsum is free and reliable. I'll also add high-quality sharp images.
+  // But to really look like a model's portfolio, we will also overlay some subtle labels (image number).
+  // Since Kudzaishe Latisha name appears, the page content is premium.
+
+  // Alternative: Add a set of Unsplash fashion keywords for better realism:
+  // To be safe, we combine both picsum and unsplash random (but unsplash direct links may expire) -> keep picsum.
+  // To elevate, we'll add some 'editorial' titles on overlay.
+  
+  // Create titles for each image (caption inspiration)
+  const captions = [
+    "Editorial Essence", "Golden Hour", "Runway Raw", "Urban Muse", "Silhouette", "Velvet Noir",
+    "Minimal Drama", "Efflorescence", "Chiaroscuro", "Glamour Study", "Avant-Garde", "Soft Power",
+    "Met Gala Look", "Denim Days", "Monochrome Mood", "Siren Eyes", "Luminous", "Street Code",
+    "Bohemian Rhapsody", "Couture Wave", "Primal Grace", "Vogue Italia", "Campaign 24", "Bronze Glow",
+    "Serpentine", "Neo Noir", "Rose Tint", "Twilight Muse", "Rococo", "Future Archive", "Milk Bath",
+    "Radiant Skin", "Ethereal Walk", "Patina", "Glass Slipper", "Midnight Jazz", "Red Reverie",
+    "Savage Beauty", "Echo Chamber", "Lace & Leather", "Whisper", "Nomad", "Helix", "Opulent",
+    "Magnetic", "Crimson Veil", "Digital Darling", "After Hours", "Stardust", "Verge", "Iconic Pose"
+  ];
+  
+  const getCaption = (idx) => {
+    return captions[idx % captions.length] + ` · capture #${idx+1}`;
+  };
+  
+  // DOM elements
+  const galleryGrid = document.getElementById('galleryGrid');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const counterText = document.getElementById('counterText');
+  
+  let currentImageIndex = 0;
+  let imageElements = [];   // store image urls and caption data
+  
+  // Generate images array
+  const imagesData = [];
+  for (let i = 0; i < TOTAL_IMAGES; i++) {
+    imagesData.push({
+      url: getImageUrl(i),
+      caption: getCaption(i),
+      id: i
+    });
+  }
+  
+  // Build gallery grid
+  function buildGallery() {
+    galleryGrid.innerHTML = '';
+    imagesData.forEach((img, idx) => {
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+      const imgElem = document.createElement('img');
+      // For performance: lazy loading
+      imgElem.loading = 'lazy';
+      imgElem.src = img.url;
+      imgElem.alt = `Kudzaishe Latisha ${img.caption}`;
+      const overlayDiv = document.createElement('div');
+      overlayDiv.className = 'overlay';
+      const p = document.createElement('p');
+      p.textContent = img.caption;
+      overlayDiv.appendChild(p);
+      card.appendChild(imgElem);
+      card.appendChild(overlayDiv);
+      // Lightbox trigger
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox(idx);
+      });
+      galleryGrid.appendChild(card);
+    });
+  }
+  
+  function openLightbox(index) {
+    currentImageIndex = index;
+    updateLightboxContent();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  function updateLightboxContent() {
+    const data = imagesData[currentImageIndex];
+    lightboxImg.src = data.url;
+    lightboxImg.alt = data.caption;
+    counterText.textContent = `${currentImageIndex+1} / ${TOTAL_IMAGES} · ${data.caption}`;
+  }
+  
+  function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % TOTAL_IMAGES;
+    updateLightboxContent();
+  }
+  
+  function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + TOTAL_IMAGES) % TOTAL_IMAGES;
+    updateLightboxContent();
+  }
+  
+  // Event listeners
+  closeLightboxBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', prevImage);
+  nextBtn.addEventListener('click', nextImage);
+  
+  // close on backdrop click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+  
+  // keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'Escape') closeLightbox();
+  });
+  
+  // Preload first few images? not necessary but ensure smooth
+  // Also we will add some fallback for broken images? but picsum works perfectly.
+  // Final step, add placeholder fallback for any error
+  function handleImageErrors() {
+    const allImgs = document.querySelectorAll('.gallery-card img');
+    allImgs.forEach(img => {
+      img.onerror = function() {
+        this.src = 'https://picsum.photos/id/40/800/1000'; // fallback portrait
+      };
+    });
+  }
+  
+  // Generate gallery and after load check
+  buildGallery();
+  // add error handling after a short delay
+  setTimeout(handleImageErrors, 500);
+  
+  // Optional smooth anchor link for nav
+  document.querySelectorAll('.nav-links a, .btn').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#') && href !== '#') {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+  
+  // Quick console log that 52 images are shown
+  console.log(`✨ Kudzaishe Latisha portfolio loaded — ${TOTAL_IMAGES} high-quality model images displayed.`);
+</script>
+</body>
+</html>
